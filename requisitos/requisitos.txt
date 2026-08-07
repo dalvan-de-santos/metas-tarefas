@@ -1,0 +1,71 @@
+Levantamento de requisitos
+#Gerenciador de Tarefas e metas
+O sistema Gerenciador de Tarefas e Metas tem como objetivo auxiliar os usuários 
+na organização de suas atividades diárias e no acompanhamento de seus objetivos. 
+A aplicação permitirá cadastrar tarefas e metas, acompanhar o progresso, visualizar 
+atividades concluídas e receber recompensas de acordo com o desempenho alcançado.
+
+#Usuarios do sistema
+Usuário
+Sistema
+
+Requisitos Funcionais
+RF01 – Cadastrar usuário: O sistema deve permitir que novos usuários realizem seu cadastro informando os dados obrigatórios.
+RF02 – Realizar login: O sistema deve permitir que o usuário acesse sua conta por meio de login e senha.
+RF03 – Criar metas: O sistema deve permitir que o usuário cadastre metas, informando título, descrição e prazo.
+RF04 – Editar metas: O sistema deve permitir que o usuário altere as informações de uma meta cadastrada.
+RF05 – Excluir metas: O sistema deve permitir que o usuário exclua suas metas.
+RF06 – Criar tarefas: O sistema deve permitir que o usuário cadastre tarefas, informando título, descrição, prazo e status.
+RF07 – Editar tarefas: O sistema deve permitir que o usuário altere as informações de uma tarefa cadastrada.
+RF08 – Excluir tarefas: O sistema deve permitir que o usuário exclua suas tarefas.
+RF09 – Concluir tarefas: O sistema deve permitir que o usuário marque uma tarefa como concluída ou não concluída.
+RF10 – Associar tarefas às metas: O sistema deve permitir que o usuário associe uma ou mais tarefas a uma meta.
+RF11 – Mostrar o progresso das metas: O sistema deve calcular e exibir o percentual de progresso de cada meta.
+RF12 – Mostrar tarefas por situação: O sistema deve apresentar separadamente as tarefas concluídas, pendentes e atrasadas.
+RF13 – Exibir o nível do usuário: O sistema deve apresentar o nível atual do usuário de acordo com seu desempenho.
+RF14 – Conceder medalhas: O sistema deve conceder medalhas ao usuário quando determinadas condições forem alcançadas.
+RF15 – Exibir medalhas: O sistema deve permitir que o usuário visualize as medalhas conquistadas.
+RF16 – Exibir painel de acompanhamento: O sistema deve apresentar um painel com informações sobre metas, tarefas, progresso, nível e medalhas do usuário.
+
+
+Requisitos Não Funcionais(RNFs)
+RNF01-Desempenho - O sistema deve responder às ações do usuário em até 2 segundos na maioria das operações.
+RNF02-Disponibilidade- O sistema deve estar disponível 99% do tempo, exceto durante manutenções programadas.
+RNF03-Segurança- O sistema deve exigir autenticação por login e senha para acessar as informações do usuário.
+RNF04-Segurança- As senhas devem ser armazenadas utilizando algoritmos de criptografia seguros.
+RNF05-Usabilidade- O sistema deve possuir uma interface simples, intuitiva e de fácil navegação.
+RNF06-Compatibilidade- O sistema deve ser compatível com os principais navegadores modernos (Chrome, Edge e Firefox).
+RNF07-Compatibilidade- O sistema deve adaptar sua interface para computadores, tablets e smartphones (design responsivo).
+RNF08-Confiabilidade - O sistema deve realizar backup automático das informações diariamente.
+RNF09-Confiabilidade - O sistema deve registrar as principais ações do usuário em arquivos de log.
+RNF10-Conformidade legal - O sistema deve seguir a Lei Geral de Proteção de Dados (LGPD).
+RNF11-Manutenibilidade - O sistema deve permitir manutenção e atualização sem comprometer os dados armazenados.
+RNF12-Escalabilidade - O sistema deve suportar pelo menos 500 usuários simultâneos sem perda significativa de desempenho.
+
+Regras de Negócio
+RN01: Cada tarefa deverá possuir um dos seguintes estados: pendente, concluída ou atrasada.
+RN02: Uma tarefa será considerada atrasada quando seu prazo for ultrapassado e ela ainda não estiver concluída.
+RN03: Uma meta poderá possuir uma ou mais tarefas associadas.
+RN04: O progresso de uma meta será calculado com base na quantidade de tarefas concluídas em relação ao total de tarefas associadas.
+RN05: Quando todas as tarefas associadas a uma meta forem concluídas, a meta será considerada concluída.
+RN06: O usuário receberá pontos ao concluir tarefas e metas.
+RN07: A quantidade de pontos recebidos poderá variar de acordo com o tipo ou a dificuldade da tarefa e da meta.
+RN08: O nível do usuário será aumentado quando ele alcançar a pontuação necessária para o próximo nível.
+RN09: O usuário receberá medalhas ao alcançar determinados níveis ou cumprir condições específicas.
+RN10: Cada medalha poderá ser concedida apenas uma vez ao mesmo usuário.
+RN11: Somente o usuário responsável poderá visualizar, editar ou excluir suas tarefas e metas.
+RN12: A exclusão de uma meta não deverá excluir automaticamente as tarefas relacionadas sem que o usuário seja informado ou confirme a operação.
+RN13 – Contador de dias e semanas
+RN13: As tarefas deverão possuir um contador de dias, variando de 1 a 30, representando um ciclo mensal. 
+RN14 – Metas do tipo Resistência
+RN14: O sistema deverá permitir a criação de metas do tipo Resistência. Nesse tipo de meta:
+Haverá apenas uma tarefa por dia.
+Ao concluir a tarefa do dia, o usuário será automaticamente direcionado para a tela de criação da tarefa do dia seguinte.
+Caso qualquer tarefa seja marcada como não concluída antes do término da meta, a meta será imediatamente encerrada e registrada como não concluída.
+A meta somente será considerada concluída quando todas as tarefas diárias forem finalizadas com sucesso até o último dia.
+
+RN15 – Metas Diárias
+RN15: O sistema deverá permitir a criação de metas do tipo Diária. Nesse tipo de meta:
+Cada dia poderá conter uma ou mais tarefas.
+Todos os dias compreendidos entre o início da meta e a data de seu término deverão possuir pelo menos uma tarefa cadastrada.
+A meta somente poderá ser considerada concluída após a realização das tarefas previstas para todos os dias do período definido.
