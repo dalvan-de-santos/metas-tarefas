@@ -3,6 +3,7 @@ package com.dalvan.gerenciadortarefa.service;
 import com.dalvan.gerenciadortarefa.dto.UsuarioCadastroDto;
 import com.dalvan.gerenciadortarefa.dto.UsuarioDto;
 import com.dalvan.gerenciadortarefa.entety.Usuario;
+import com.dalvan.gerenciadortarefa.execept.EmailJaCadastradoException;
 import com.dalvan.gerenciadortarefa.execept.UsuarioNaoEncontradoExeception;
 import com.dalvan.gerenciadortarefa.repository.UsuarioRepository;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -26,7 +27,7 @@ public class UsuarioService {
     public UsuarioDto cadastrar(UsuarioCadastroDto dados) {
 
         if(usuarioRepository.existsByEmail(dados.getEmail())) {
-            throw new RuntimeException("Email ja cadastrado");
+            throw new EmailJaCadastradoException();
         }
 
         String senhaHash = passwordEncoder.encode(dados.getSenha());
