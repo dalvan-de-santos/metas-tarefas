@@ -34,31 +34,52 @@ public class GlobalExceptionHandler {
             EmailJaCadastradoException exception) {
 
         ErroDto erroDto = new ErroDto(
-                HttpStatus.NOT_FOUND.value(),
+                HttpStatus.CONFLICT.value(),
                 exception.getMessage()
         );
 
         return ResponseEntity
-                .status(HttpStatus.BAD_REQUEST)
+                .status(HttpStatus.CONFLICT)
                 .body(erroDto);
     }
 
     @ExceptionHandler(MethodArgumentNotValidException.class)
-    public ResponseEntity<Map<String, String>> tratarValidacao(
+    public ResponseEntity<ErroDto> tratarValidacao(
             MethodArgumentNotValidException exception) {
-        Map<String, String> erros = new HashMap<>();
+        Map<String, String> campos = new HashMap<>();
 
         exception.getBindingResult()
                 .getFieldErrors()
                 .forEach(erro ->
-                        erros.put(
+                        campos.put(
                                 erro.getField(),
                                 erro.getDefaultMessage()));
+
+        ErroDto erro = new ErroDto(
+                HttpStatus.BAD_REQUEST.value(),
+                "Dados invalidos",
+                campos
+        );
+
         return ResponseEntity
                 .badRequest()
-                .body(erros);
+                .body(erro);
 
     }
+
+    @ExceptionHandler(CredenciaisIvalidasExeception.class)
+    public ResponseEntity<ErroDto> tratarCredenciaisInvalidas(
+            CredenciaisIvalidasExeception exeption) {
+                ErroDto erro = new ErroDto(
+                        HttpStatus.UNAUTHORIZED.value(),
+                        exeption.getMessage()
+                );
+
+                return ResponseEntity
+                        .status(HttpStatus.UNAUTHORIZED)
+                        .body(erro);
+    }
+
 
 
 
