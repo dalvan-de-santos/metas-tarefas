@@ -84,4 +84,10 @@ public class UsuarioService {
         }
         return usuarioDtos;
     }
+
+    public Usuario buscarPorEmail(String email) {
+        return usuarioRepository.findByEmail(email)
+                .orElseThrow(UsuarioNaoEncontradoExeception::new);
+
+    }
 }
