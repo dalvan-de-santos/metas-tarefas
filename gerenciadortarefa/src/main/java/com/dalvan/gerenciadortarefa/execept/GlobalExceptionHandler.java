@@ -80,6 +80,20 @@ public class GlobalExceptionHandler {
                         .body(erro);
     }
 
+    @ExceptionHandler(MetaNaoEncontradaExeption.class)
+    public ResponseEntity<ErroDto> tratarMetaNaoEncontrada(
+            MetaNaoEncontradaExeption exeption) {
+
+        ErroDto erroDto = new ErroDto(
+                HttpStatus.NOT_FOUND.value(),
+                exeption.getMessage()
+        );
+
+        return ResponseEntity
+                .status(HttpStatus.NOT_FOUND)
+                .body(erroDto);
+    }
+
 
 
 

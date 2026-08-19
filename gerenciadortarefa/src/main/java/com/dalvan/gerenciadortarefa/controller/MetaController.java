@@ -1,17 +1,18 @@
 package com.dalvan.gerenciadortarefa.controller;
 
 
+import com.dalvan.gerenciadortarefa.dto.AtualizarMetaDto;
 import com.dalvan.gerenciadortarefa.dto.MetaCadastroDto;
 import com.dalvan.gerenciadortarefa.dto.MetaDto;
 import com.dalvan.gerenciadortarefa.entety.Usuario;
 import com.dalvan.gerenciadortarefa.service.MetaService;
 import com.dalvan.gerenciadortarefa.service.UsuarioService;
 import jakarta.validation.Valid;
+import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.Authentication;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("/metas")
@@ -34,5 +35,39 @@ public class MetaController {
         return metaService.cadastrar(dados, usuario);
     }
 
+    @GetMapping
+    public List<MetaDto> listar(Authentication authentication) {
+        String email = authentication.getName();
+        Usuario usuario = usuarioService.buscarPorEmail(email);
+
+        return metaService.listarMetaUsuario(usuario);
+    }
+
+    @GetMapping("/{id}")
+    public MetaDto buscarPorId(@PathVariable Long id, Authentication authentication) {
+        String email = authentication.getName();
+
+        Usuario usuario = usuarioService.buscarPorEmail(email);
+
+        return metaService.buscarIdAndUsuario(id, usuario);
+    }
+
+    @PutMapping("/{id}")
+    public MetaDto atualizar(@PathVariable Long id, @Valid @RequestBody AtualizarMetaDto dados, Authentication authentication) {
+        String email = authentication.getName();
+        Usuario usuario = usuarioService.buscarPorEmail(email);
+
+        return metaService.atualizar(id, dados, usuario);
+    }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Void> excluir(@PathVariable Long id, Authentication authentication) {
+        String email = authentication.getName();
+        Usuario usuario = usuarioService.buscarPorEmail(email);
+
+        metaService.deletar(id, usuario);
+
+        return ResponseEntity.noContent().build();
+    }
 
 }
