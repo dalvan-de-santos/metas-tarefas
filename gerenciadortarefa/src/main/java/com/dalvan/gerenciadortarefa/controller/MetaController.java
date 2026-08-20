@@ -4,7 +4,7 @@ package com.dalvan.gerenciadortarefa.controller;
 import com.dalvan.gerenciadortarefa.dto.AtualizarMetaDto;
 import com.dalvan.gerenciadortarefa.dto.MetaCadastroDto;
 import com.dalvan.gerenciadortarefa.dto.MetaDto;
-import com.dalvan.gerenciadortarefa.entety.Usuario;
+import com.dalvan.gerenciadortarefa.entity.Usuario;
 import com.dalvan.gerenciadortarefa.service.MetaService;
 import com.dalvan.gerenciadortarefa.service.UsuarioService;
 import jakarta.validation.Valid;

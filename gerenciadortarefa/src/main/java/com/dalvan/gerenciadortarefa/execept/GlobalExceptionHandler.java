@@ -4,6 +4,7 @@ package com.dalvan.gerenciadortarefa.execept;
 import com.dalvan.gerenciadortarefa.dto.ErroDto;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.http.converter.HttpMessageNotReadableException;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
@@ -92,6 +93,22 @@ public class GlobalExceptionHandler {
         return ResponseEntity
                 .status(HttpStatus.NOT_FOUND)
                 .body(erroDto);
+    }
+
+    @ExceptionHandler(HttpMessageNotReadableException.class)
+    public ResponseEntity<Map<String, Object>> tratarHttpMessageNotReadable(HttpMessageNotReadableException exception) {
+        Map<String, Object> erro = new HashMap<>();
+
+        erro.put("status", 400);
+        erro.put("erro", "Dados invalidos");
+        erro.put(
+                "mensagem",
+                "Valor invalido, verifique os campos enviados!"
+        );
+
+        return ResponseEntity
+                .status(HttpStatus.BAD_REQUEST)
+                .body(erro);
     }
 
 

@@ -2,7 +2,6 @@ package com.dalvan.gerenciadortarefa.controller;
 
 import com.dalvan.gerenciadortarefa.dto.UsuarioCadastroDto;
 import com.dalvan.gerenciadortarefa.dto.UsuarioDto;
-import com.dalvan.gerenciadortarefa.entety.Usuario;
 import com.dalvan.gerenciadortarefa.service.UsuarioService;
 import jakarta.validation.Valid;
 import org.springframework.web.bind.annotation.*;

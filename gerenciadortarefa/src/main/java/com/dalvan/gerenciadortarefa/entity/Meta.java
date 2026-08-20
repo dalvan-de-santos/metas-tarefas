@@ -1,4 +1,4 @@
-package com.dalvan.gerenciadortarefa.entety;
+package com.dalvan.gerenciadortarefa.entity;
 
 import com.dalvan.gerenciadortarefa.enums.StatusMeta;
 import com.dalvan.gerenciadortarefa.enums.TipoMeta;

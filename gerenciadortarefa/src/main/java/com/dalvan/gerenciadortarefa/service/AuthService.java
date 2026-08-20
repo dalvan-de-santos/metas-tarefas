@@ -1,13 +1,11 @@
 package com.dalvan.gerenciadortarefa.service;
 
 import com.dalvan.gerenciadortarefa.dto.UsuarioLoginDto;
-import com.dalvan.gerenciadortarefa.entety.Usuario;
+import com.dalvan.gerenciadortarefa.entity.Usuario;
 import com.dalvan.gerenciadortarefa.execept.CredenciaisIvalidasExeception;
 import com.dalvan.gerenciadortarefa.repository.UsuarioRepository;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
-
-import javax.swing.undo.CannotRedoException;
 
 @Service
 public class AuthService {

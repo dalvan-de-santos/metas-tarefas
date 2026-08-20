@@ -1,6 +1,6 @@
 package com.dalvan.gerenciadortarefa.repository;
 
-import com.dalvan.gerenciadortarefa.entety.Usuario;
+import com.dalvan.gerenciadortarefa.entity.Usuario;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.Optional;

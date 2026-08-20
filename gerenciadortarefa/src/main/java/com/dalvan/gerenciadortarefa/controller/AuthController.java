@@ -2,7 +2,7 @@ package com.dalvan.gerenciadortarefa.controller;
 
 import com.dalvan.gerenciadortarefa.dto.LoginResponseDto;
 import com.dalvan.gerenciadortarefa.dto.UsuarioLoginDto;
-import com.dalvan.gerenciadortarefa.entety.Usuario;
+import com.dalvan.gerenciadortarefa.entity.Usuario;
 import com.dalvan.gerenciadortarefa.service.AuthService;
 import com.dalvan.gerenciadortarefa.service.UsuarioService;
 import jakarta.validation.Valid;
